@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class AI : Player
 {
-    public List<UI> buttons = null;
+    [SerializeField] UI m_ui = null;
 
     public bool RandomlyPickStuff()
     {
-
+        
         return false;
     }
 }
