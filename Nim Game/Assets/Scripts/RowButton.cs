@@ -9,7 +9,7 @@ public class RowButton : MonoBehaviour
     static int rowNum = 1;
     string m_rowName = null;
     bool m_enabled = false;
-    int index;
+    public int index { get; set; }
     void Start()
     {
         m_rowName = "Row " + rowNum;
