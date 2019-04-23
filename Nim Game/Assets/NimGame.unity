@@ -6247,6 +6247,7 @@ GameObject:
   - component: {fileID: 1271019151}
   - component: {fileID: 1271019153}
   - component: {fileID: 1271019152}
+  - component: {fileID: 1271019154}
   m_Layer: 5
   m_Name: GamePanel
   m_TagString: Untagged
@@ -6313,6 +6314,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1271019150}
   m_CullTransparentMesh: 0
+--- !u!114 &1271019154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271019150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6fcef34ee9540343bb1a3bdc84a0396, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 0}
 --- !u!1 &1275543858
 GameObject:
   m_ObjectHideFlags: 0
@@ -10108,6 +10122,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1914152230}
+  - component: {fileID: 1914152234}
   - component: {fileID: 1914152233}
   - component: {fileID: 1914152232}
   - component: {fileID: 1914152231}
@@ -10177,7 +10192,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1914152232}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1914152234}
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1914152232
@@ -10217,6 +10243,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1914152229}
   m_CullTransparentMesh: 0
+--- !u!114 &1914152234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914152229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6fcef34ee9540343bb1a3bdc84a0396, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 78de8cc732a305741ac9cdbc6a860ead, type: 2}
 --- !u!1 &1926297787
 GameObject:
   m_ObjectHideFlags: 0
