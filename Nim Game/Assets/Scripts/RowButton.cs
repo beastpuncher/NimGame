@@ -5,11 +5,11 @@ using TMPro;
 
 public class RowButton : MonoBehaviour
 {
-    [SerializeField]List<GameObject> rowPieces = new List<GameObject>();
+    public List<GameObject> rowPieces = new List<GameObject>();
     static int rowNum = 1;
     string m_rowName = null;
     bool m_enabled = false;
-    int index;
+    public int index { get; set; }
     void Start()
     {
         m_rowName = "Row " + rowNum;
