@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/NimGame.unity
+    guid: e16ff63653b0fb54c80c9f6653542127
   m_configObjects: {}

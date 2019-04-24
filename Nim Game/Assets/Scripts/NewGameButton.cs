@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NewGameButton : MonoBehaviour
 {
-    public string Name;
+    private string Name = "New Game";
 
-    private void ResetGame()
+    public string text { get { return Name; } }
+
+    public void ResetGame()
     {
-
+        SceneManager.LoadScene(0);
     }
 }
