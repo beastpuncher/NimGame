@@ -10,6 +10,9 @@ public class RowButton : MonoBehaviour
     string m_rowName = null;
     bool m_enabled = false;
     public int index = 0;
+
+    public bool isEnabled { get { return m_enabled; } set { m_enabled = value; } }
+
     void Start()
     {
         m_rowName = "Row " + rowNum;
@@ -21,7 +24,9 @@ public class RowButton : MonoBehaviour
         m_enabled = true;
         if (ValidateMove())
         {
+            GameObject obj = rowPieces[index];
             rowPieces.RemoveAt(index);
+            Destroy(obj);
         }
     }
 

@@ -5,9 +5,10 @@ using UnityEngine;
 public class EndTurn : MonoBehaviour
 {
     private string btnText;
-    public bool FinishTurn()
+    public void FinishTurn()
     {
-        Game.m_activePlayer = (Game.m_activePlayer == Game.m_player1) ? Game.m_player2 : Game.m_player1;
-        return true;
+       // Game.m_activePlayer = (Game.m_activePlayer == Game.m_player1) ? Game.m_player2 : Game.m_player1;
+        Game.isOneTurn = (Game.isOneTurn) ? false : true;
+        Debug.Log(Game.isOneTurn);
     }
 }

@@ -14,13 +14,15 @@ public class Game : MonoBehaviour
     [SerializeField] TMP_Dropdown dWinCondition = null;
     [SerializeField] TextMeshProUGUI m_p1Name = null;
     [SerializeField] TextMeshProUGUI m_p2Name = null;
+    [SerializeField] TextMeshProUGUI m_activeName = null;
     
     public Definitions.eDiffcultyenum difficulty;
-    public Definitions.eGameMode gameMode;
+    public static Definitions.eGameMode gameMode;
     public Definitions.eWinCondition winCondition;
+    public static bool isOneTurn = true;
     public static Player m_activePlayer = null;
     public static Player m_player1 = new Player();
-    public static Player m_player2;
+    public static Player m_player2 = new Player();
 
     void Start()
     {
@@ -36,14 +38,7 @@ public class Game : MonoBehaviour
         difficulty = (Definitions.eDiffcultyenum)dDifficulty.value;
         gameMode = (Definitions.eGameMode)dGameMode.value;
         winCondition = (Definitions.eWinCondition)dWinCondition.value;
-        if (gameMode == Definitions.eGameMode.PLAYER_VS_PLAYER)
-        {
-            m_player2 = new Player();
-        }
-        else
-        {
-            m_player2 = new AI();
-        }
+        
         m_player1.name = m_p1Name.text.ToString();
         m_player2.name = m_p2Name.text.ToString();
         Debug.Log(m_player1.name);
@@ -51,7 +46,9 @@ public class Game : MonoBehaviour
 
     void Update()
     {
-       
+        if(isOneTurn) m_activeName.text = m_player1.name + "'s Turn";
+        if(!isOneTurn) m_activeName.text = m_player2.name + "'s Turn";
+
 
     }
 
