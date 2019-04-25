@@ -10,6 +10,8 @@ public class UI : MonoBehaviour
     [SerializeField] GameObject rowBut = null;
     [SerializeField] List<GameObject> rowPlaceholder = null;
     [SerializeField] List<GameObject> rowButtonPlaceholder = null;
+    [SerializeField] GameObject m_parent = null;
+    [SerializeField] int m_spacing = 20;
     List<GameObject> rowButtons = new List<GameObject>();
     List<GameObject> optionButtons = new List<GameObject>();
 
@@ -26,9 +28,12 @@ public class UI : MonoBehaviour
                 for (int i = 0; i < 2; i++)
                 {
                     rowButtons.Add(rowBut);
+                    rowButtons[i].GetComponent<RowButton>().rowPieces.Clear();
                     for (int j = 0; j < 3; j++)
                     {
-                        rowButtons[i].GetComponent<RowButton>().rowPieces.Add(gamePiece);
+                        Vector3 position = rowPlaceholder[i].transform.position + (Vector3.right * j * m_spacing);
+                        GameObject piece = Instantiate(gamePiece, position, Quaternion.identity, rowPlaceholder[i].transform);
+                        rowButtons[i].GetComponent<RowButton>().rowPieces.Add(piece);
                     }
                 }
                 break;
@@ -36,6 +41,7 @@ public class UI : MonoBehaviour
                 for (int i = 0; i < 3; i++)
                 {
                     rowButtons.Add(rowBut);
+                    rowButtons[i].GetComponent<RowButton>().rowPieces.Clear();
                     int x = 0;
                     if (i == 0)
                     {
@@ -51,7 +57,9 @@ public class UI : MonoBehaviour
                     }
                     for (int j = 0; j < x; j++)
                     {
-                        rowButtons[i].GetComponent<RowButton>().rowPieces.Add(gamePiece);
+                        Vector3 position = rowPlaceholder[i].transform.position + (Vector3.right * j * m_spacing);
+                        GameObject piece = Instantiate(gamePiece, position, Quaternion.identity, rowPlaceholder[i].transform);
+                        rowButtons[i].GetComponent<RowButton>().rowPieces.Add(piece);
                     }
                 }
                 break;
@@ -59,6 +67,7 @@ public class UI : MonoBehaviour
                 for (int i = 0; i < 4; i++)
                 {
                     rowButtons.Add(rowBut);
+                    rowButtons[i].GetComponent<RowButton>().rowPieces.Clear();
                     int x = 0;
                     if (i == 0)
                     {
@@ -78,16 +87,18 @@ public class UI : MonoBehaviour
                     }
                     for (int j = 0; j < x; j++)
                     {
-                        rowButtons[i].GetComponent<RowButton>().rowPieces.Add(gamePiece);
+                        Vector3 position = rowPlaceholder[i].transform.position + (Vector3.right * j * m_spacing);
+                        GameObject piece = Instantiate(gamePiece, position, Quaternion.identity, rowPlaceholder[i].transform);
+                        rowButtons[i].GetComponent<RowButton>().rowPieces.Add(piece);
                     }
                 }
                 break;
         }
         Debug.Log(rowButtons.Count);
-        for(int i = 0; i<rowButtons.Count-1; i++)
+        for(int i = 0; i<rowButtons.Count; i++)
         {
             Vector3 position = rowButtonPlaceholder[i].transform.position;
-            Instantiate(rowButtons[i], position, Quaternion.identity);
+            GameObject obj = Instantiate(rowButtons[i], position, Quaternion.identity,rowButtonPlaceholder[i].transform);
         }
     }
 
