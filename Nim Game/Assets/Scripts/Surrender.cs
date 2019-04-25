@@ -15,7 +15,7 @@ public class Surrender : MonoBehaviour
             m_first_end.SetActive(true);
         }
     }
-    public void FirstYes()
+    public void FirstNo()
     {
         if(m_second_end.activeSelf == false)
         {
@@ -23,24 +23,23 @@ public class Surrender : MonoBehaviour
             m_second_end.SetActive(true);
         }
     }
-    public void FirstNo()
+    public void FirstYes()
     {
         if(m_first_end.activeSelf == true)
         {
             m_first_end.SetActive(false);
         }
+        SceneManager.LoadScene("NimGame");
     }
 
     public void SecondYes()
     {
         SceneManager.LoadScene("NimGame");
-        //reload scene and start in begining
+        //exit application
     }
     public void SecondNo()
     {
-        if(m_second_end.activeSelf == true)
-        {
-            m_second_end.SetActive(false);
-        }
+        SceneManager.LoadScene("NimGame");
+        //reload scene and start in begining
     }
 }
