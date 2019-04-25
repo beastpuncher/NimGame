@@ -9,19 +9,22 @@ public class Game : MonoBehaviour
     [SerializeField] GameObject Main_Game = null;
     [SerializeField] GameObject End_Prompt = null;
     [SerializeField] GameObject End_Prompt_2 = null;
-    [SerializeField] TMP_Dropdown dif = null;
-    [SerializeField] TMP_Dropdown mode = null;
-    [SerializeField] TMP_Dropdown win = null;
+    [SerializeField] TMP_Dropdown dDifficulty = null;
+    [SerializeField] TMP_Dropdown dGameMode = null;
+    [SerializeField] TMP_Dropdown dWinCondition = null;
     [SerializeField] TextMeshProUGUI m_p1Name = null;
     [SerializeField] TextMeshProUGUI m_p2Name = null;
+    
     public Definitions.eDiffcultyenum difficulty;
     public Definitions.eGameMode gameMode;
-    public Definitions.eWinCondition winCon;
-    Player m_player1 = new Player();
-    Player m_player2;
+    public Definitions.eWinCondition winCondition;
+    public static Player m_activePlayer = null;
+    public static Player m_player1 = new Player();
+    public static Player m_player2;
 
     void Start()
     {
+        m_activePlayer = m_player1;
         Main_Menu.SetActive(true);
         Main_Game.SetActive(false);
     }
@@ -30,9 +33,9 @@ public class Game : MonoBehaviour
     {
         Main_Menu.SetActive(false);
         Main_Game.SetActive(true);
-        difficulty = (Definitions.eDiffcultyenum)dif.value;
-        gameMode = (Definitions.eGameMode)mode.value;
-        winCon = (Definitions.eWinCondition)win.value;
+        difficulty = (Definitions.eDiffcultyenum)dDifficulty.value;
+        gameMode = (Definitions.eGameMode)dGameMode.value;
+        winCondition = (Definitions.eWinCondition)dWinCondition.value;
         if (gameMode == Definitions.eGameMode.PLAYER_VS_PLAYER)
         {
             m_player2 = new Player();
