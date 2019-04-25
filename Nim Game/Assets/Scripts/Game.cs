@@ -18,7 +18,7 @@ public class Game : MonoBehaviour
     
     public Definitions.eDiffcultyenum difficulty;
     public static Definitions.eGameMode gameMode;
-    public Definitions.eWinCondition winCondition;
+    public static Definitions.eWinCondition winCondition;
     public static bool isOneTurn = true;
     public static Player m_activePlayer = null;
     public static Player m_player1 = new Player();

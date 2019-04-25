@@ -20,6 +20,8 @@ public class RowButton : MonoBehaviour
     }
     public void OnClick()
     {
+        transform.parent.parent.parent.GetComponent<UI>().checkWinCon();
+        transform.parent.parent.parent.GetComponent<UI>().piecesTaken += 1;
         index = rowPieces.Count-1;
         m_enabled = true;
         if (ValidateMove())

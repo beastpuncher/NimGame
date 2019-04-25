@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class UI : MonoBehaviour
 {
@@ -12,14 +13,27 @@ public class UI : MonoBehaviour
     [SerializeField] List<GameObject> rowButtonPlaceholder = null;
     [SerializeField] GameObject m_parent = null;
     [SerializeField] int m_spacing = 20;
+    [SerializeField] TextMeshProUGUI m_winnerText = null;
+    [SerializeField] Button m_endTurnButton = null;
     List<GameObject> rowButtons = new List<GameObject>();
+    public bool win = false;
+
+    public bool firstTurn = true;
+    public int piecesTaken = 0;
+
+    private void Update()
+    {
+        if(!firstTurn && piecesTaken == 0)
+        {
+            m_endTurnButton.interactable = false;
+        }
+        else
+        {
+            m_endTurnButton.interactable = true;
+        }
+    }
 
     public List<GameObject> buttons { get { return rowButtons; } }
-
-    private void Start()
-    {
-       
-    }
 
     public void GameStarted()
     {
@@ -104,8 +118,44 @@ public class UI : MonoBehaviour
         GetComponent<RowButtonMaster>().listCreated = true;
     }
 
-    private void Update()
+    public void checkWinCon()
     {
         
+        if (Game.winCondition == Definitions.eWinCondition.LAST_WIN)
+        {
+            win = true;
+            foreach(GameObject obj in rowButtons)
+            {
+                if (obj.GetComponent<RowButton>().rowPieces.Count != 0)
+                {
+                    win = false;
+                    break;
+                }
+            }
+            if (win)
+            {
+                GetComponent<Surrender>().clickSurrender();
+            }
+        }
+        else
+        {
+            foreach (GameObject obj in rowButtons)
+            {
+                if (obj.GetComponent<RowButton>().rowPieces.Count == 0)
+                {
+                    win = true;                   
+                }
+                else
+                {
+                    win = false;
+                    break;
+                }
+            }
+            if (win)
+            {
+                Game.isOneTurn = !Game.isOneTurn;
+                GetComponent<Surrender>().clickSurrender();
+            }
+        }
     }
 }

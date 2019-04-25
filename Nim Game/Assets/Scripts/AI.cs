@@ -23,8 +23,15 @@ public class AI : Player
 
     public bool RandomlyPickStuff()
     {
-        GameObject obj = m_rowButtons[(int)(Random.Range(0, m_rowButtons.Count))];
+        int randObj = Random.Range(0, m_rowButtons.Count);
+        GameObject obj = m_rowButtons[randObj];
         RowButton rb = obj.GetComponent<RowButton>();
+        while (rb.rowPieces.Count == 0 && GetComponent<UI>().win == false)
+        {
+            randObj = Random.Range(0, m_rowButtons.Count);
+            obj = m_rowButtons[randObj];
+            rb = obj.GetComponent<RowButton>();
+        }
         int rand = Random.Range(1, rb.rowPieces.Count);
         for (int i = 0; i < rand; i++)
         {
