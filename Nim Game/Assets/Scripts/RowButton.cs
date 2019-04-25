@@ -9,18 +9,20 @@ public class RowButton : MonoBehaviour
     static int rowNum = 1;
     string m_rowName = null;
     bool m_enabled = false;
-    public int index { get; set; }
+    public int index = 0;
     void Start()
     {
         m_rowName = "Row " + rowNum;
         rowNum++;
-        index = rowPieces.Count;
     }
     public void OnClick()
     {
+        index = rowPieces.Count-1;
         m_enabled = true;
-        rowPieces.RemoveAt(index);
-        index--;
+        if (ValidateMove())
+        {
+            rowPieces.RemoveAt(index);
+        }
     }
 
     public bool ValidateMove()
